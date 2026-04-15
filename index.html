@@ -240,7 +240,8 @@
         <p class="cta-body">1:1 sessions are currently booked through May.<br>Join a live workshop to experience Mila's gift for yourself.</p>
         <div class="cta-buttons">
           <a href="https://milashealingtouch.as.me/?appointmentType=78587690" target="_blank" rel="noopener" class="btn btn-primary">Book a Workshop - $111</a>
-          <a href="https://milashealingtouch.as.me/?appointmentType=68191290" target="_blank" rel="noopener" class="btn btn-secondary">Join 1:1 Waitlist</a>
+          <button class="btn btn-secondary" onclick="openWaitlist('new')">New Client Waitlist</button>
+          <button class="btn btn-outline" onclick="openWaitlist('existing')">Existing Client - Book Next</button>
         </div>
         <div class="cta-social">
           <a href="https://www.instagram.com/milashealingtouch/" target="_blank" rel="noopener">Instagram</a>
@@ -258,6 +259,44 @@
     </footer>
 
   </main>
+
+  <!-- WAITLIST MODALS -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeWaitlist()">&times;</button>
+
+      <!-- NEW CLIENT FORM -->
+      <div class="modal-form" id="formNew">
+        <h3>Join the Waitlist</h3>
+        <p class="modal-desc">Mila is currently booked through May. Be first to know when new spots open.</p>
+        <form onsubmit="submitWaitlist(event, 'new')">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+          <input type="tel" name="phone" placeholder="Phone with country code (e.g. +1 555 123 4567)">
+          <button type="submit" class="btn btn-primary modal-submit">Join Waitlist</button>
+        </form>
+      </div>
+
+      <!-- EXISTING CLIENT FORM -->
+      <div class="modal-form" id="formExisting" style="display:none;">
+        <h3>Book Your Next Session</h3>
+        <p class="modal-desc">Already a client? Get priority access to June slots at your current rate before prices increase.</p>
+        <form onsubmit="submitWaitlist(event, 'existing')">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+          <input type="tel" name="phone" placeholder="Phone with country code (e.g. +1 555 123 4567)">
+          <button type="submit" class="btn btn-primary modal-submit">Reserve My Spot</button>
+        </form>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="modal-success" id="formSuccess" style="display:none;">
+        <div class="success-icon">&#10003;</div>
+        <h3>You're on the list.</h3>
+        <p class="modal-desc">Mila will reach out personally when spots open. In the meantime, follow her on <a href="https://www.instagram.com/milashealingtouch/" target="_blank">Instagram</a> or <a href="https://www.tiktok.com/@milashealingtouch" target="_blank">TikTok</a>.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>

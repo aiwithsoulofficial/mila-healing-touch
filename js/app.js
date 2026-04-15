@@ -191,3 +191,68 @@
   // Wait for fonts + images
   window.addEventListener("load", init);
 })();
+
+/* ---------- WAITLIST MODALS ---------- */
+const SUPABASE_URL = "https://jiquevvzrdavgqonvvug.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppcXVldnZ6cmRhdmdxb252dnVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzIxNzIsImV4cCI6MjA4NzU0ODE3Mn0.e4mYjXj8TGTC0_UCm3QCKGSv8Cl-migIl7reYIKNcW4";
+
+function openWaitlist(type) {
+  const modal = document.getElementById("waitlistModal");
+  document.getElementById("formNew").style.display = type === "new" ? "block" : "none";
+  document.getElementById("formExisting").style.display = type === "existing" ? "block" : "none";
+  document.getElementById("formSuccess").style.display = "none";
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeWaitlist() {
+  document.getElementById("waitlistModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("waitlistModal").addEventListener("click", function (e) {
+  if (e.target === this) closeWaitlist();
+});
+
+async function submitWaitlist(e, type) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector("button[type=submit]");
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  const data = {
+    list_type: type,
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim() || null,
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + "/rest/v1/mila_waitlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: "Bearer " + SUPABASE_KEY,
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      document.getElementById("formNew").style.display = "none";
+      document.getElementById("formExisting").style.display = "none";
+      document.getElementById("formSuccess").style.display = "block";
+    } else {
+      btn.textContent = "Something went wrong - try again";
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = originalText; }, 3000);
+    }
+  } catch (err) {
+    btn.textContent = "Connection error - try again";
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
+}
