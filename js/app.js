@@ -6,6 +6,12 @@
 (function () {
   "use strict";
 
+  /* ---------- FORCE SCROLL TO TOP ---------- */
+  history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
   /* ---------- LENIS SMOOTH SCROLL ---------- */
   const lenis = new Lenis({
     duration: 1.4,
