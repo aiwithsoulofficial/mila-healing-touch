@@ -49,63 +49,99 @@
 
     WORKSHOP_PATH: {
       messages: [
-        "Mila runs live workshops on Zoom for $111 each. They're hands-on, transformational, and no experience needed. Which one interests you?",
+        "Mila has two ways to learn from her:",
+        "Live workshops on Zoom ($111) - hands-on, real-time, transformational.",
+        "Pre-recorded workshops ($77 each) - watch anytime, pause and rewind, lifetime access. Each comes with a PDF workbook.",
       ],
       options: [
-        { label: 'Energy Clearing',             next: 'WORKSHOP_EC' },
-        { label: 'Learn the Emotion Code',      next: 'WORKSHOP_EMO' },
-        { label: 'Muscle Test Like Mila',       next: 'WORKSHOP_MT' },
-        { label: 'Tell me about all of them',   next: 'WORKSHOP_ALL' },
+        { label: 'Live workshops ($111)',           next: 'WORKSHOP_LIVE' },
+        { label: 'Pre-recorded workshops ($77)',    next: 'WORKSHOP_RECORDED' },
+        { label: 'Get all 4 recordings ($297)',     next: 'WORKSHOP_BUNDLE' },
+        { label: 'Back to start',                   next: 'START' },
+      ],
+    },
+
+    WORKSHOP_LIVE: {
+      messages: [
+        "Live workshops run on Zoom - $111 each. Mila teaches in real time, you practice the techniques live, and she answers your questions as you go. No experience needed.",
+      ],
+      options: [
+        { label: 'Book Energy Clearing - $111',    next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=78587690' },
+        { label: 'Book Emotion Code - $111',       next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779394' },
+        { label: 'Book Muscle Testing - $111',     next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779232' },
+        { label: 'See pre-recorded options',        next: 'WORKSHOP_RECORDED' },
+        { label: 'Back to start',                   next: 'START' },
+      ],
+    },
+
+    WORKSHOP_RECORDED: {
+      messages: [
+        "Four pre-recorded workshops - $77 each. Watch on your own schedule, as many times as you like. Each includes a premium PDF workbook. Recommended order:",
+      ],
+      options: [
+        { label: '1. Energy Clearing',              next: 'WORKSHOP_EC' },
+        { label: '2. Muscle Test Like Mila',        next: 'WORKSHOP_MT' },
+        { label: '3. Learn the Emotion Code',       next: 'WORKSHOP_EMO' },
+        { label: '4. Advanced Techniques',          next: 'WORKSHOP_ADV' },
+        { label: 'Get all 4 for $297',              next: 'WORKSHOP_BUNDLE' },
       ],
     },
 
     WORKSHOP_EC: {
       messages: [
-        "In the Energy Clearing workshop, you'll learn how to identify and release trapped emotional energy that's been weighing you down. People walk in carrying years of heaviness and walk out feeling lighter - sometimes in ways they can't even explain.",
+        "Energy Clearing (55 min) - Your space holds energy, and not all of it is yours. Learn to identify when your environment is draining you, clear trapped energies, and protect your space daily. Mila demonstrates her Rose of Jericho clearing technique live.",
         '"Weight lifted like magic." - Multiple clients',
       ],
       options: [
-        { label: 'Book Energy Clearing - $111', next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=78587690' },
-        { label: 'See other workshops',         next: 'WORKSHOP_PATH' },
+        { label: 'Buy Energy Clearing - $77',  next: 'LINK', url: 'https://mila-healing-touch.onrender.com/workshops.html#workshops' },
+        { label: 'See other workshops',         next: 'WORKSHOP_RECORDED' },
+        { label: 'Back to start',               next: 'START' },
+      ],
+    },
+
+    WORKSHOP_MT: {
+      messages: [
+        "Muscle Test Like Mila (64 min) - Your body already knows the answer. Learn three methods - the sway test, the arm test, and the O-ring finger test - and practice live. This is the skill that makes everything else in energy work possible.",
+      ],
+      options: [
+        { label: 'Buy Muscle Testing - $77',   next: 'LINK', url: 'https://mila-healing-touch.onrender.com/workshops.html#workshops' },
+        { label: 'See other workshops',         next: 'WORKSHOP_RECORDED' },
         { label: 'Back to start',               next: 'START' },
       ],
     },
 
     WORKSHOP_EMO: {
       messages: [
-        "Learn the Emotion Code is where you'll discover how your body stores emotions and how to find and release them using muscle testing and the Chart of Emotions. This is the foundation of everything Mila does.",
+        "Learn the Emotion Code (80 min) - The full method. How trapped emotions form, how to trace them through generations, how to identify them using the chart, and how to release them permanently. Includes Heart-Wall clearing.",
         '"Better after one session than 10 years of talk therapy." - Nancy B',
       ],
       options: [
-        { label: 'Book Emotion Code - $111', next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779394' },
-        { label: 'See other workshops',      next: 'WORKSHOP_PATH' },
-        { label: 'Back to start',            next: 'START' },
+        { label: 'Buy Emotion Code - $77',     next: 'LINK', url: 'https://mila-healing-touch.onrender.com/workshops.html#workshops' },
+        { label: 'See other workshops',         next: 'WORKSHOP_RECORDED' },
+        { label: 'Back to start',               next: 'START' },
       ],
     },
 
-    WORKSHOP_MT: {
+    WORKSHOP_ADV: {
       messages: [
-        "Muscle Test Like Mila teaches you how to communicate directly with your subconscious mind. You'll learn the sway test, finger test, and how to use muscle testing for everyday decisions - not just healing. Once you learn this, you'll never look at your body the same way.",
+        "Advanced Techniques (53 min) - For practitioners and students who have completed the foundation workshops. Setting intention, creating sacred space, the process of elimination technique, reading the body's messages, and live healing demonstrations.",
       ],
       options: [
-        { label: 'Book Muscle Testing - $111', next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779232' },
-        { label: 'See other workshops',        next: 'WORKSHOP_PATH' },
-        { label: 'Back to start',              next: 'START' },
+        { label: 'Buy Advanced - $77',         next: 'LINK', url: 'https://mila-healing-touch.onrender.com/workshops.html#workshops' },
+        { label: 'See other workshops',         next: 'WORKSHOP_RECORDED' },
+        { label: 'Back to start',               next: 'START' },
       ],
     },
 
-    WORKSHOP_ALL: {
+    WORKSHOP_BUNDLE: {
       messages: [
-        "Here's what's available:",
-        "Energy Clearing ($111) - Learn to identify and release trapped emotional energy. Walk out lighter.",
-        "Learn the Emotion Code ($111) - Discover how your body stores emotions and how to release them. The foundation of Mila's work.",
-        "Muscle Test Like Mila ($111) - Communicate with your subconscious mind. Use it for healing, decisions, even your pets.",
+        "The Complete Collection - all 4 recorded workshops + all 4 PDF workbooks for $297 (save $11 vs buying individually). Over 4 hours of content. Lifetime access to everything.",
+        "Energy Clearing, Muscle Test Like Mila, Learn the Emotion Code, and Advanced Techniques - the full foundation for a self-healing practice.",
       ],
       options: [
-        { label: 'Book Energy Clearing',  next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=78587690' },
-        { label: 'Book Emotion Code',     next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779394' },
-        { label: 'Book Muscle Testing',   next: 'LINK', url: 'https://milashealingtouch.as.me/?appointmentType=81779232' },
-        { label: 'Back to start',         next: 'START' },
+        { label: 'Get the Complete Collection - $297', next: 'LINK', url: 'https://mila-healing-touch.onrender.com/workshops.html#workshops' },
+        { label: 'See individual workshops',            next: 'WORKSHOP_RECORDED' },
+        { label: 'Back to start',                       next: 'START' },
       ],
     },
 
@@ -125,7 +161,7 @@
       messages: [
         "Mila Velazquez spent 30 years as a Physical Therapist before discovering what medicine couldn't explain. Now she helps women release trapped emotions and chronic pain through energy healing.",
         "She's a Certified Emotion Code Practitioner who bridges the physical and the metaphysical - clinical experience meets consciousness work, the angelic realm, and all kinds of woo. And she owns it.",
-        "86,000+ followers on Instagram. 1,690+ YouTube subscribers. Clients across the world.",
+        "155,000+ followers across social media. 1,690+ YouTube subscribers. Clients across the world.",
       ],
       options: [
         { label: 'Book a session',    next: 'BOOK_PATH' },
@@ -135,7 +171,7 @@
     },
   };
 
-  var LINK_FAREWELL = "Taking you there now! If you have any questions, Mila's DMs are always open @milashealingtouch";
+  var LINK_FAREWELL = "Taking you there now! If you have any questions, come back to this chat or reach out on Instagram @milashealingtouch";
 
   // ─── CSS ─────────────────────────────────────────────────────────────────────
   var CSS = [
